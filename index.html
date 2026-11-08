@@ -634,6 +634,16 @@ body.tab-b .top,body.tab-b #pass{visibility:hidden}
 @keyframes tabOut{from{opacity:1}to{opacity:0}}
 @keyframes tabOutC{from{opacity:1}to{opacity:0}}
 
+.occ{display:flex;flex-direction:column;gap:16px}
+.occ .oh{display:flex;flex-direction:column;gap:4px}
+.occ .oh h4{font-weight:700;font-size:18px;line-height:22px;margin:0}
+.occ .oh p{margin:0;font-size:14px;line-height:20px;color:var(--main-primary)}
+.leg{display:flex;gap:16px;align-items:center}
+.leg span{display:flex;gap:8px;align-items:center;font-weight:600;font-size:12px;line-height:16px;color:var(--main-placeholder);text-transform:uppercase}
+.leg i{width:16px;height:16px;border-radius:50%;flex-shrink:0}
+.leg .lme{background:var(--main-brand)}
+.leg .lbz{background:repeating-linear-gradient(45deg,#e6e6e8 0 2.6px,#fff 2.6px 5.2px);box-shadow:inset 0 0 0 .5px #e6e6e8}
+
 </style>
 </head>
 <body>
@@ -1455,7 +1465,7 @@ SCR.room={tone:'light',render(p){
   <div class="rsheet"><div class="h28">${r.name}</div><div class="sub2">${r.floor} этаж${DOT}Кабинет ${r.no}</div><div class="way">${r.way[0].toUpperCase()+r.way.slice(1)}</div>
     <div class="pills"><span class="pill">До ${r.cap} ${plural(r.cap,P_PEOPLE)}</span>${r.eq.map(e=>`<span class="pill">${EQN[e]}</span>`).join('')}</div>
     <div class="dcard"><span class="ib">${FI[14]}</span><span class="ptx"><span class="t">${fmtDate(q.date)}</span><span class="s">${fmtRange(q.start,q.dur)}</span></span><button class="lnk" data-a="openTime" data-v="room">Изменить</button></div>
-    <div class="occ"><h4>Занятость</h4><div class="chart"><div class="pl">${grid}${bz}${me}</div></div><p>${note}</p></div>
+    <div class="occ"><div class="oh"><h4>Занятость</h4><p>${note}</p></div><div class="chart"><div class="pl">${grid}${bz}${me}</div></div>${(me||bz)?`<div class="leg">${me?'<span><i class="lme"></i>Ваше время</span>':''}${bz?'<span><i class="lbz"></i>Занято</span>':''}</div>`:''}</div>
   </div>`};
 }};
 
